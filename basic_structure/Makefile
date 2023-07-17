@@ -4,7 +4,7 @@
 
 # The commands are a series of steps typiclly to make the target.
 # Is need to strat each line targets with tab.
-#The prerequisits are file name ssepareted by spaces.
+#The prerequisits are file name separeted by spaces.
 # these files need to exist before de commandsfor de target are run.
 
 build: my_lib.o main.o
