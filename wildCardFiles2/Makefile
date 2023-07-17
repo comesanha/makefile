@@ -35,19 +35,22 @@ endif
 
 CXX_COMPILER_CALL = $(CXX) $(CXXFLAGS) # concatenatio of variables
 
-CXX_OBJECTS = my_lib.o main.o # lista de objetos
+# busca tosod os arquivos.cpp
+CXX_SOURCES = $(wildcard *.cpp)
+#Substitui os .cpp por .o no nome dos arquivos.
+CXX_OBJECTS = $(patsubst %.cpp, %.o, $(CXX_SOURCES))
 
 
 build: $(CXX_OBJECTS)
 	$(CXX_COMPILER_CALL) $(CXX_OBJECTS) $(LDFLAGS) -o $(EXECUTABLE_NAME)
 	
 execute:
-	./$(EXECUTABLE_NAME)
+	./main
 
 # clean is often used as a target that removes the outputs of other targets.
 clean:
 	rm -f *.o
-	rm -f $(EXECUTABLE_NAME)
+	rm -f main
 
 ##############
 ###PATTERNS###
