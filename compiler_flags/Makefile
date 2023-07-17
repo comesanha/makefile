@@ -15,30 +15,29 @@
 # LDFLAGS: Extra flags to give to the Linker
 
 DEBUG = 1 #debug or release
-
 EXECUTABLE_NAME = main #Name of executable file
 
 CXX_STANDARD = c++17 #C++ standard
-CXX_WARNINGS = -Wall -Wextra -Wpedantic #Warnings
+CXX_WARNINGS = -Wall -Wextra -Wpedantic # enables all and extra Warnings
 
 CXX = g++ # C++ compiler
 CXXFLAGS = $(CXX_WARNINGS) -std=$(CXX_STANDARD)
 LDFLAGS = 
 
-#Debug or Release flag
-ifeq ($(DEBUG),1)
+#Debug or Release flag -- not working completelly
+ifeq ($(DEBUG), 1)
 CXXFLAGS += -g -O0 #not optimize  and generate debug symbols
 else
-CXXFLAGS  += -O3 #highest optimization level
+CXXFLAGS += -O3 #highest optimization level
 endif
 
-COMPILER_CALL = $(CXX) $(CXXFLAGS) # concatenatio fo variables
+COMPILER_CALL = $(CXX) $(CXXFLAGS) # concatenatio of variables
 
 
 
 
 build: my_lib.o main.o
-	
+	echo $(DEBUG)
 	$(COMPILER_CALL) main.o my_lib.o $(LDFLAGS) -o $(EXECUTABLE_NAME)
 	
 main.o:
