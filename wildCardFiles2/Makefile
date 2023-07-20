@@ -14,7 +14,7 @@
 # CPPFLAGS: Extra flags to give to the C preprocessor
 # LDFLAGS: Extra flags to give to the Linker
 
-DEBUG = 1 #debug or release
+override DEBUG := 1 #debug or release ****testar
 
 
 CXX_STANDARD = c++17 #C++ standard
@@ -45,12 +45,12 @@ build: $(CXX_OBJECTS)
 	$(CXX_COMPILER_CALL) $(CXX_OBJECTS) $(LDFLAGS) -o $(EXECUTABLE_NAME)
 	
 execute:
-	./main
+	./$(EXECUTABLE_NAME)
 
 # clean is often used as a target that removes the outputs of other targets.
 clean:
 	rm -f *.o
-	rm -f main
+	rm -f $(EXECUTABLE_NAME)
 
 ##############
 ###PATTERNS###
